@@ -31,3 +31,10 @@ app.get('/', function(req,res){
 app.get('/test', function (req, res) {
   res.send("hi test is working");
 });
+
+//test route
+app.get('/users', function(req, res) {
+  User.find().exec(function (err, users) {
+    res.send(users);
+  });
+});
