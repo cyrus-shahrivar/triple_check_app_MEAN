@@ -1,0 +1,25 @@
+{
+  "name": "triple_check_mean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyrus-shahrivar/triple_check_app_MEAN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyrus-shahrivar/triple_check_app_MEAN/issues"
+  },
+  "homepage": "https://github.com/cyrus-shahrivar/triple_check_app_MEAN#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongoose": "^4.2.9",
+    "morgan": "^1.6.1"
+  }
+}
