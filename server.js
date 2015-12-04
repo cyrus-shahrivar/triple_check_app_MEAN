@@ -1,7 +1,16 @@
 var express = require('express');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
+var User = require('./models/users.js');
 var app = express();
+
+mongoose.connect('mongodb://localhost/toDoApp', function (err) {
+  if(err){
+    console.log(err);
+  } else {
+    console.log('connection successful - server');
+  }
+});
 
 app.use(morgan('combined'));
 
