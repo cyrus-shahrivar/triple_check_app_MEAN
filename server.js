@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
-var User = require('./models/users.js');
+var ToDos = require('./models/toDos.js');
 var app = express();
 
 mongoose.connect('mongodb://localhost/toDoApp', function (err) {
@@ -33,8 +33,8 @@ app.get('/test', function (req, res) {
 });
 
 //test route
-app.get('/users', function(req, res) {
-  User.find().exec(function (err, users) {
-    res.send(users);
+app.get('/toDos', function(req, res) {
+  ToDos.find().exec(function (err, toDos) {
+    res.send(toDos);
   });
 });

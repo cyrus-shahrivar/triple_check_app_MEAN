@@ -7,16 +7,16 @@ function toDoAppCtrl($http, $log) {
   var self = this;
   self.title = "Triple Check";
   self.subTitle = "Making You More Efficient, Three Checks At a Time";
-  self.allUsers = {};
-  self.getUsers;
-  getUsers();
+  self.allToDos = {};
+  self.getToDos;
+  getToDos();
 
-  function getUsers() {
+  function getToDos() {
     //go to our data service
     $http
-      .get('/users')
+      .get('/toDos')
       .then(function (res) {
-        self.allUsers = res.data;
+        self.allToDos = res.data;
         $log.log(self);
       })
       .catch(function (res) {

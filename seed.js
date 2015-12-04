@@ -1,4 +1,4 @@
-var User = require('./models/users.js'),
+var ToDos = require('./models/toDos.js'),
     mongoose = require('mongoose');
 
 //connect to mongo database
@@ -11,24 +11,17 @@ mongoose.connect('mongodb://localhost/toDoApp', function (err) {
 });
 
 
-var arrayOfUsers = [{
-    username: "cyrus",
-    password: "nope",
-    toDos:["eat breakfast", "eat lunch", "eat dinner"]
-  },
+var toDosSeed = [
   {
-    username: "courtney",
-    password: "nope",
     toDos:["run","eat breakfast", "eat lunch", "eat dinner", "run again"]
   }
-
 ];
 
-User.collection.insert(arrayOfUsers, onUsersInsert);
+ToDos.collection.insert(toDosSeed, onUsersInsert);
 function onUsersInsert(err, docs) {
   if (err) {
       console.log(err);
   } else {
-      console.info('users seed was successfully stored.', docs.length);
+      console.info('todos seed was successfully stored.', docs.length);
   }
 }
