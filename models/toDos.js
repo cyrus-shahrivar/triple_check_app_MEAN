@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var ToDosSchema = new mongoose.Schema({
-  toDos: Array
+  toDos: String
 });
 var ToDos = mongoose.model('ToDos', ToDosSchema);
 

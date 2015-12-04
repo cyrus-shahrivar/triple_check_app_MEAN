@@ -11,17 +11,16 @@ mongoose.connect('mongodb://localhost/toDoApp', function (err) {
 });
 
 
-var toDosSeed = [
+var toDosSeed = new ToDos(
   {
-    toDos:["run","eat breakfast", "eat lunch", "eat dinner", "run again"]
+    toDos:"run"
   }
-];
+);
 
-ToDos.collection.insert(toDosSeed, onUsersInsert);
-function onUsersInsert(err, docs) {
+toDosSeed.save(function (err, docs) {
   if (err) {
       console.log(err);
   } else {
       console.info('todos seed was successfully stored.', docs.length);
   }
-}
+});
