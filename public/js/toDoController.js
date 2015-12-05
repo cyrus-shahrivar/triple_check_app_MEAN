@@ -11,11 +11,12 @@ function toDoAppCtrl($http, $log) {
   self.newToDo = {};
   self.addToDos = addToDos;
   self.getToDos;
+  self.deleteToDos = deleteToDos;
   getToDos();
 
   function getToDos() {
     //go to our data service
-    $log.log("i'm inside getToDos")
+    $log.log("i'm inside getToDos");
     $http
       .get('/toDos')
       .then(function (res) {
@@ -24,7 +25,7 @@ function toDoAppCtrl($http, $log) {
       })
       .catch(function (res) {
         $log.error('failure',res);
-      })
+      });
   }
 
   function addToDos() {
@@ -36,7 +37,22 @@ function toDoAppCtrl($http, $log) {
       })
       .catch(function (res) {
         $log.error('failure',res);
-      })
+      });
     self.newToDo = {};
   }
+
+  function deleteToDos(aDo) {
+    $log.log("inside delete todos");
+    $log.log(aDo);
+    $http
+      .delete('/toDos/'+aDo._id)
+      .then(function (response) {
+        getToDos();
+      })
+      .catch(function (res) {
+        $log.error('failure',res);
+      });
+  }
+
+
 }

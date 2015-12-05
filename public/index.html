@@ -8,9 +8,11 @@
   </head>
   <body>
     <section class="container" ng-controller="toDoAppCtrl as toDo">
-      <div class="col-md-6">
+      <div class="page-header">
         <h1>{{toDo.title}}</h1>
         <h2>{{toDo.subTitle}}</h2>
+      </div>
+      <div class="col-md-6">
         <form ng-submit="toDo.addToDos()">
             <div class="form-group">
               <label for="new-toDo">Get $#it Done</label>
@@ -23,7 +25,7 @@
         </form>
       </div>
       <div class="col-md-6 well">
-        <li ng-repeat="aDo in toDo.allToDos">{{aDo.toDos}}</li>
+        <li ng-repeat="aDo in toDo.allToDos">{{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
       </div>
 
 

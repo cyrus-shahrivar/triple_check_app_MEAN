@@ -45,7 +45,6 @@ app.get('/toDos', function(req, res) {
 //post to dos
 app.post('/toDos', function (req, res) {
   var toDo = new ToDos(req.body);
-  console.log(req.body);
   toDo.save(function (err) {
     if (err) {
       console.log(err);
@@ -53,5 +52,12 @@ app.post('/toDos', function (req, res) {
       console.log('To Do saved');
       res.send(toDo);
     }
+  });
+});
+
+//delete to dos
+app.delete('/toDos/:id', function (req, res) {
+  ToDos.remove({_id: req.params.id}).exec(function (err, toDos) {
+    res.send(toDos);
   });
 });
