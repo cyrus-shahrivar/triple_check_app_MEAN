@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var ToDos = require('./models/toDos.js');
+var Done = require('./models/done.js');
 var bodyParser = require('body-parser');
 var app = express();
 
@@ -42,6 +43,13 @@ app.get('/toDos', function(req, res) {
   });
 });
 
+//get done
+app.get('/done', function(req, res) {
+  Done.find().exec(function (err, done) {
+    res.send(done);
+  });
+});
+
 
 //post to dos
 app.post('/toDos', function (req, res) {
@@ -56,9 +64,29 @@ app.post('/toDos', function (req, res) {
   });
 });
 
+//post done
+app.post('/done', function (req, res) {
+  var done = new Done(req.body);
+  done.save(function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Done saved');
+      res.send(done);
+    }
+  });
+});
+
 //delete to dos
 app.delete('/toDos/:id', function (req, res) {
   ToDos.remove({_id: req.params.id}).exec(function (err, toDos) {
     res.send(toDos);
+  });
+});
+
+//delete done
+app.delete('/done/:id', function (req, res) {
+  Done.remove({_id: req.params.id}).exec(function (err, done) {
+    res.send(done);
   });
 });
