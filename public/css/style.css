@@ -1,3 +1,11 @@
 .striken {
   text-decoration: line-through;
 }
+
+.center {
+  text-align: center;
+}
+
+.no-bullet {
+  list-style: none;
+}

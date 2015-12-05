@@ -9,28 +9,27 @@
   <body>
     <section class="container" ng-controller="toDoAppCtrl as toDo">
       <div class="page-header">
-        <h1>{{toDo.title}}</h1>
-        <h2>{{toDo.subTitle}}</h2>
+        <h1 class="center">{{toDo.title}}</h1>
+        <h2 class="center"><span class="glyphicon glyphicon-check" aria-hidden="true"><span class="glyphicon glyphicon-check" aria-hidden="true"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></h2>
       </div>
       <div class="col-md-4 well">
         <form ng-submit="toDo.addToDos()">
             <div class="form-group">
-              <label for="new-toDo">Get $#it Done</label>
               <input required type="text" class="form-control" id="new-toDo" placeholder="Got something to do?..." ng-model="toDo.newToDo.toDos">
             </div>
               <div class="form-group">
-                <button class="btn btn-primary" type="submit">Add To Do</button>
+                <button class="btn btn-primary" type="submit">Add a DO</button>
               </div>
             </div>
         </form>
       </div>
       <div class="col-md-4">
-        <h3>To Do</h3>
-        <li ng-repeat="aDo in toDo.allToDos"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addDone(aDo.toDos); toDo.deleteToDos(aDo);"></a> {{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
+        <h3 class="center">DO</h3>
+        <li class="no-bullet" ng-repeat="aDo in toDo.allToDos"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addDone(aDo.toDos); toDo.deleteToDos(aDo);"></a> {{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
       </div>
       <div class="col-md-4">
-        <h3>Done</h3>
-        <li class="striken" ng-repeat="aDo in toDo.allDone">{{aDo.done}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteDone(aDo)"></a></li>
+        <h3 class="center">DONE</h3>
+        <li class="striken no-bullet" ng-repeat="aDo in toDo.allDone">{{aDo.done}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteDone(aDo)"></a></li>
       </div>
     </section>
 
