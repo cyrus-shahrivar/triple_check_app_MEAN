@@ -3,7 +3,7 @@
 app.controller("toDoAppCtrl", ["$http","$log", toDoAppCtrl]);
 
 function toDoAppCtrl($http, $log) {
-  $log.info("I'm inside the controller");
+  $log.log("controller is connected");
   var self = this;
   self.title = "Triple Check";
   self.subTitle = "Making You More Efficient, Three Checks At a Time";
@@ -16,6 +16,7 @@ function toDoAppCtrl($http, $log) {
   getToDos();
 
   self.allDone;
+  self.newDone = {};
   self.addDone = addDone;
   self.getDone;
   self.deleteDone = deleteDone;
@@ -23,12 +24,10 @@ function toDoAppCtrl($http, $log) {
 
   function getDone() {
     //go to our data service
-    $log.log("i'm inside getDone");
     $http
       .get('/done')
       .then(function (res) {
         self.allDone = res.data;
-        $log.log(res.data);
       })
       .catch(function (res) {
         $log.error('failure',res);
@@ -37,12 +36,10 @@ function toDoAppCtrl($http, $log) {
 
   function getToDos() {
     //go to our data service
-    $log.log("i'm inside getToDos");
     $http
       .get('/toDos')
       .then(function (res) {
         self.allToDos = res.data;
-        $log.log(res.data);
       })
       .catch(function (res) {
         $log.error('failure',res);
@@ -50,7 +47,6 @@ function toDoAppCtrl($http, $log) {
   }
 
   function addToDos() {
-    $log.log(self);
     $http
       .post('/toDos', self.newToDo)
       .then(function (response) {
@@ -62,21 +58,19 @@ function toDoAppCtrl($http, $log) {
     self.newToDo = {};
   }
 
-  function addDone() {
-    $log.log(self);
+  function addDone(aDone) {
+    $log.log("i'm inside addDone");
     $http
-      .post('/done', self.newDone)
+      .post('/done', {done: aDone})
       .then(function (response) {
-        getToDos();
+        getDone();
       })
       .catch(function (res) {
         $log.error('failure',res);
       });
-    self.newDone = {};
   }
 
   function deleteToDos(aDo) {
-    $log.log("inside delete todos");
     $log.log(aDo);
     $http
       .delete('/toDos/'+aDo._id)
@@ -89,7 +83,6 @@ function toDoAppCtrl($http, $log) {
   }
 
   function deleteDone(aDo) {
-    $log.log("inside delete todos");
     $log.log(aDo);
     $http
       .delete('/done/'+aDo._id)

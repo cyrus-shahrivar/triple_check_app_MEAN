@@ -24,11 +24,11 @@
             </div>
         </form>
       </div>
-      <div class="col-md-4 well">
+      <div class="col-md-4">
         <h3>To Do</h3>
-        <li ng-repeat="aDo in toDo.allToDos"><input type="checkbox">{{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
+        <li ng-repeat="aDo in toDo.allToDos"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addDone(aDo.toDos); toDo.deleteToDos(aDo);"></a> {{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
       </div>
-      <div class="col-md-4 well">
+      <div class="col-md-4">
         <h3>Done</h3>
         <li class="striken" ng-repeat="aDo in toDo.allDone">{{aDo.done}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteDone(aDo)"></a></li>
       </div>
