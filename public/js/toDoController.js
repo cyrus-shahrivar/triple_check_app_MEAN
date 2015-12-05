@@ -7,6 +7,7 @@ function toDoAppCtrl($http, $log) {
   var self = this;
   self.title = "Triple Check";
   self.subTitle = "Making You More Efficient, Three Checks At a Time";
+
   self.allToDos;
   self.newToDo = {};
   self.addToDos = addToDos;

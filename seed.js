@@ -13,7 +13,8 @@ mongoose.connect('mongodb://localhost/toDoApp', function (err) {
 
 var toDosSeed = new ToDos(
   {
-    toDos:"run"
+    toDos:"run",
+    done: "walk"
   }
 );
 
