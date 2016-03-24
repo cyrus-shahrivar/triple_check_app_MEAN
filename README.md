@@ -2,6 +2,8 @@
 
 <img src="./screen_shot.png"/ width="700">
 
+### Author: Cyrus Shahrivar
+### Date: 12/15/2015
 ### Technologies Used
 - MongoDB
 - ExpressJS
