@@ -12,7 +12,7 @@
         <h1 class="center">{{toDo.title}}</h1>
         <h2 class="center"><span class="glyphicon glyphicon-check" aria-hidden="true"><span class="glyphicon glyphicon-check" aria-hidden="true"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></h2>
       </div>
-      <div class="col-md-4 well">
+      <div class="col-md-3 well">
         <form ng-submit="toDo.addToDos()">
             <div class="form-group">
               <input required type="text" class="form-control" id="new-toDo" placeholder="Got something to do?..." ng-model="toDo.newToDo.toDos">
@@ -23,11 +23,19 @@
             </div>
         </form>
       </div>
-      <div class="col-md-4">
-        <h3 class="center">DO</h3>
-        <li class="no-bullet" ng-repeat="aDo in toDo.allToDos"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addDone(aDo.toDos); toDo.deleteToDos(aDo);"></a> {{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
+      <div class="col-md-2">
+        <h3 class="center">TO DO</h3>
+        <li class="no-bullet" ng-repeat="aDo in toDo.allToDos"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addStarted(aDo.toDos); toDo.deleteToDos(aDo);"></a>{{aDo.toDos}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteToDos(aDo)"></a></li>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
+        <h3 class="center">STARTED</h3>
+        <li class="no-bullet" ng-repeat="aDo in toDo.allStarted"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addInProg(aDo.started); toDo.deleteStarted(aDo);"></a>{{aDo.started}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteStarted(aDo)"></a></li>
+      </div>
+      <div class="col-md-2">
+        <h3 class="center">IN PROGRESS</h3>
+        <li class="no-bullet" ng-repeat="aDo in toDo.allInProg"><a href class="glyphicon glyphicon-check" aria-hidden="true" ng-click="toDo.addDone(aDo.inProg); toDo.deleteInProg(aDo);"></a> {{aDo.inProg}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteInProg(aDo)"></a></li>
+      </div>
+      <div class="col-md-2">
         <h3 class="center">DONE</h3>
         <li class="striken no-bullet" ng-repeat="aDo in toDo.allDone">{{aDo.done}}<a href class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="toDo.deleteDone(aDo)"></a></li>
       </div>
